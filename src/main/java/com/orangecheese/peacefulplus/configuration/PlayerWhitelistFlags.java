@@ -21,6 +21,8 @@ public class PlayerWhitelistFlags {
 
     private Float experienceMultiplier;
 
+    private Float breakingSpeedMultiplier;
+
     public PlayerWhitelistFlags() {
         maximumEntityTargets = null;
         foodDrain = false;
@@ -32,6 +34,7 @@ public class PlayerWhitelistFlags {
         instantTreeChopper = false;
         keepInventory = false;
         experienceMultiplier = null;
+        breakingSpeedMultiplier = null;
     }
 
     public Integer getMaximumEntityTargets() {
@@ -112,5 +115,13 @@ public class PlayerWhitelistFlags {
 
     public void setExperienceMultiplier(Float experienceMultiplier) {
         this.experienceMultiplier = experienceMultiplier;
+    }
+
+    public Float getBreakingSpeedMultiplier() {
+        return breakingSpeedMultiplier;
+    }
+
+    public void setBreakingSpeedMultiplier(Float breakingSpeedMultiplier) {
+        this.breakingSpeedMultiplier = breakingSpeedMultiplier;
     }
 }

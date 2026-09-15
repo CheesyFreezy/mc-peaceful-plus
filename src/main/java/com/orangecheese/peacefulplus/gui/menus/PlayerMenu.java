@@ -75,6 +75,7 @@ public class PlayerMenu extends Menu {
         InstantTreeChopperPlayerFlagNode instantTreeChopperNode = new InstantTreeChopperPlayerFlagNode(uuid);
         KeepInventoryPlayerFlagNode keepInventoryNode = new KeepInventoryPlayerFlagNode(uuid);
         ExperienceMultiplayerPlayerFlagNode experienceMultiplayerNode = new ExperienceMultiplayerPlayerFlagNode(uuid);
+        BreakingSpeedPlayerFlagNode breakingSpeedPlayerNode = new BreakingSpeedPlayerFlagNode(uuid);
 
         int page = paginationFeature.getPage();
 
@@ -88,7 +89,8 @@ public class PlayerMenu extends Menu {
                 instantVeinMinerNode,
                 instantTreeChopperNode,
                 keepInventoryNode,
-                experienceMultiplayerNode
+                experienceMultiplayerNode,
+                breakingSpeedPlayerNode
         })
                 .skip((long) (page - 1) * availableSlots)
                 .limit(availableSlots)
