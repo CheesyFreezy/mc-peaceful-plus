@@ -1,6 +1,6 @@
 name: PeacefulPlus
 main: com.orangecheese.peacefulplus.PeacefulPlusPlugin
-version: 0.1-ALPHA
+version: 0.2-ALPHA
 author: Nosaii
 description: Your best friend in managing difficulty in the form of a plugin.
 api-version: 1.13
