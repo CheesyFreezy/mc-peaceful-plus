@@ -1,6 +1,7 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.entity.ExperienceOrb;
@@ -8,8 +9,8 @@ import org.bukkit.entity.ExperienceOrb;
 import java.util.UUID;
 
 public class OnRetrieveExperienceEvent extends WhiteListProxyEvent<PlayerPickupExperienceEvent> {
-    public OnRetrieveExperienceEvent() {
-        super(PlayerPickupExperienceEvent.class);
+    public OnRetrieveExperienceEvent(PeacefulPlusPlugin plugin) {
+        super(PlayerPickupExperienceEvent.class, plugin);
     }
 
     @Override

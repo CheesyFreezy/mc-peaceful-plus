@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.entity.Player;
@@ -8,8 +9,8 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 import java.util.UUID;
 
 public class OnHealthRegenerationEvent extends WhiteListProxyEvent<EntityRegainHealthEvent> {
-    public OnHealthRegenerationEvent() {
-        super(EntityRegainHealthEvent.class);
+    public OnHealthRegenerationEvent(PeacefulPlusPlugin plugin) {
+        super(EntityRegainHealthEvent.class, plugin);
     }
 
     @Override

@@ -43,15 +43,16 @@ public class PeacefulPlusPlugin extends JavaPlugin {
 
     private void registerEvents() {
         // Proxy listeners.
-        OnFoodLossEvent foodLossEvent = new OnFoodLossEvent();
-        OnHealthRegenerationEvent healthRegenerationEvent = new OnHealthRegenerationEvent();
-        OnFallDamageEvent fallDamageEvent = new OnFallDamageEvent();
-        OnItemDamageEvent itemDamageEvent = new OnItemDamageEvent();
-        OnElytraBoostEvent elytraBoostEvent = new OnElytraBoostEvent();
-        OnVeinMineEvent veinMineEvent = new OnVeinMineEvent();
-        OnTreeChopperEvent treeChopperEvent = new OnTreeChopperEvent();
-        OnKeepInventoryOnDeathEvent keepInventoryOnDeathEvent = new OnKeepInventoryOnDeathEvent();
-        OnRetrieveExperienceEvent retrieveExperienceEvent = new OnRetrieveExperienceEvent();
+        OnFoodLossEvent foodLossEvent = new OnFoodLossEvent(this);
+        OnHealthRegenerationEvent healthRegenerationEvent = new OnHealthRegenerationEvent(this);
+        OnFallDamageEvent fallDamageEvent = new OnFallDamageEvent(this);
+        OnItemDamageEvent itemDamageEvent = new OnItemDamageEvent(this);
+        OnElytraBoostEvent elytraBoostEvent = new OnElytraBoostEvent(this);
+        OnVeinMineEvent veinMineEvent = new OnVeinMineEvent(this);
+        OnTreeChopperEvent treeChopperEvent = new OnTreeChopperEvent(this);
+        OnKeepInventoryOnDeathEvent keepInventoryOnDeathEvent = new OnKeepInventoryOnDeathEvent(this);
+        OnRetrieveExperienceEvent retrieveExperienceEvent = new OnRetrieveExperienceEvent(this);
+        OnDropVacuumEvent dropVacuumEvent = new OnDropVacuumEvent(this);
 
         registerWhiteListProxyEvent(foodLossEvent);
         registerWhiteListProxyEvent(healthRegenerationEvent);
@@ -62,6 +63,7 @@ public class PeacefulPlusPlugin extends JavaPlugin {
         registerWhiteListProxyEvent(treeChopperEvent);
         registerWhiteListProxyEvent(keepInventoryOnDeathEvent);
         registerWhiteListProxyEvent(retrieveExperienceEvent);
+        registerWhiteListProxyEvent(dropVacuumEvent);
 
         // Standard listeners.
         OnHostileTargetEvent hostileTargetEvent = new OnHostileTargetEvent();

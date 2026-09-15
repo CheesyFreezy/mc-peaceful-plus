@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
@@ -7,8 +8,8 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import java.util.UUID;
 
 public class OnItemDamageEvent extends WhiteListProxyEvent<PlayerItemDamageEvent> {
-    public OnItemDamageEvent() {
-        super(PlayerItemDamageEvent.class);
+    public OnItemDamageEvent(PeacefulPlusPlugin plugin) {
+        super(PlayerItemDamageEvent.class, plugin);
     }
 
     @Override

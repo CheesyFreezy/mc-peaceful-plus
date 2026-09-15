@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.entity.Entity;
@@ -9,8 +10,8 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import java.util.UUID;
 
 public class OnFoodLossEvent extends WhiteListProxyEvent<FoodLevelChangeEvent> {
-    public OnFoodLossEvent() {
-        super(FoodLevelChangeEvent.class);
+    public OnFoodLossEvent(PeacefulPlusPlugin plugin) {
+        super(FoodLevelChangeEvent.class, plugin);
     }
 
     @Override

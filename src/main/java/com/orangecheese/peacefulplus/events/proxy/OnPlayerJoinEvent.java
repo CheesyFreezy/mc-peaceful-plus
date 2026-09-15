@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.attribute.Attribute;
@@ -10,8 +11,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class OnPlayerJoinEvent extends WhiteListProxyEvent<PlayerJoinEvent> {
-    public OnPlayerJoinEvent() {
-        super(PlayerJoinEvent.class);
+    public OnPlayerJoinEvent(PeacefulPlusPlugin plugin) {
+        super(PlayerJoinEvent.class, plugin);
     }
 
     @Override

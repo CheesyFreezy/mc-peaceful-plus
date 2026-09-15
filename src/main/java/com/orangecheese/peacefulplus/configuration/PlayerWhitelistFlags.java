@@ -23,6 +23,8 @@ public class PlayerWhitelistFlags {
 
     private Float breakingSpeedMultiplier;
 
+    private boolean dropVacuum;
+
     public PlayerWhitelistFlags() {
         maximumEntityTargets = null;
         foodDrain = false;
@@ -35,6 +37,7 @@ public class PlayerWhitelistFlags {
         keepInventory = false;
         experienceMultiplier = null;
         breakingSpeedMultiplier = null;
+        dropVacuum = false;
     }
 
     public Integer getMaximumEntityTargets() {
@@ -123,5 +126,13 @@ public class PlayerWhitelistFlags {
 
     public void setBreakingSpeedMultiplier(Float breakingSpeedMultiplier) {
         this.breakingSpeedMultiplier = breakingSpeedMultiplier;
+    }
+
+    public boolean isDropVacuum() {
+        return dropVacuum;
+    }
+
+    public void setDropVacuum(boolean dropVacuum) {
+        this.dropVacuum = dropVacuum;
     }
 }

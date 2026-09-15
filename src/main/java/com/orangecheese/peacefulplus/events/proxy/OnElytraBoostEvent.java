@@ -1,14 +1,15 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
 import com.destroystokyo.paper.event.player.PlayerElytraBoostEvent;
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 
 import java.util.UUID;
 
 public class OnElytraBoostEvent extends WhiteListProxyEvent<PlayerElytraBoostEvent> {
-    public OnElytraBoostEvent() {
-        super(PlayerElytraBoostEvent.class);
+    public OnElytraBoostEvent(PeacefulPlusPlugin plugin) {
+        super(PlayerElytraBoostEvent.class, plugin);
     }
 
     @Override

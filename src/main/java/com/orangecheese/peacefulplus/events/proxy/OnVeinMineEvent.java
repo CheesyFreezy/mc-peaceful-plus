@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.GameMode;
@@ -41,8 +42,8 @@ public class OnVeinMineEvent extends WhiteListProxyEvent<BlockBreakEvent> {
             BlockFace.WEST
     };
 
-    public OnVeinMineEvent() {
-        super(BlockBreakEvent.class);
+    public OnVeinMineEvent(PeacefulPlusPlugin plugin) {
+        super(BlockBreakEvent.class, plugin);
     }
 
     @Override

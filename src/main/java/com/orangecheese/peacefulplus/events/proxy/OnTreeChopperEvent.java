@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.GameMode;
@@ -36,8 +37,8 @@ public class OnTreeChopperEvent extends WhiteListProxyEvent<BlockBreakEvent> {
             BlockFace.WEST
     };
 
-    public OnTreeChopperEvent() {
-        super(BlockBreakEvent.class);
+    public OnTreeChopperEvent(PeacefulPlusPlugin plugin) {
+        super(BlockBreakEvent.class, plugin);
     }
 
     @Override

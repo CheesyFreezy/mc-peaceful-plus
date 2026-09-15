@@ -1,5 +1,6 @@
 package com.orangecheese.peacefulplus.events.proxy;
 
+import com.orangecheese.peacefulplus.PeacefulPlusPlugin;
 import com.orangecheese.peacefulplus.configuration.PlayerWhitelistFlags;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -7,8 +8,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import java.util.UUID;
 
 public class OnKeepInventoryOnDeathEvent extends WhiteListProxyEvent<PlayerDeathEvent> {
-    public OnKeepInventoryOnDeathEvent() {
-        super(PlayerDeathEvent.class);
+    public OnKeepInventoryOnDeathEvent(PeacefulPlusPlugin plugin) {
+        super(PlayerDeathEvent.class, plugin);
     }
 
     @Override
