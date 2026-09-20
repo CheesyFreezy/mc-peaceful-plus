@@ -15,6 +15,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -31,42 +33,38 @@ public class PlayerSelectionMenu extends Menu {
     public void onRender(int availableSlots) {
         int page = paginationFeature.getPage();
 
-        List<CompletableFuture<PlayerProfile>> playerProfileFetches = new ArrayList<>();
-        for(OfflinePlayer offlinePlayer : Bukkit.getOfflinePlayers())
-            playerProfileFetches.add(offlinePlayer.getPlayerProfile().update());
+        List<OfflinePlayer> offlinePlayers = Arrays.stream(Bukkit.getOfflinePlayers())
+                .sorted(Comparator.comparing(
+                        OfflinePlayer::getName,
+                        Comparator.nullsLast(String::compareToIgnoreCase)
+                ))
+                .skip((long) (page - 1) * availableSlots)
+                .limit(availableSlots)
+                .toList();
 
-        CompletableFuture<List<PlayerProfile>> combinedPlayerProfileFetches =
-                CompletableFuture.allOf(playerProfileFetches.toArray(new CompletableFuture[0]))
-                        .thenApply(v -> playerProfileFetches.stream()
-                                .map(CompletableFuture::join)
-                                .toList());
+        for (OfflinePlayer offlinePlayer : offlinePlayers) {
+            offlinePlayer.getPlayerProfile().update()
+                    .thenAccept(playerProfile -> {
+                        if (playerProfile.getName() == null)
+                            return;
 
-        combinedPlayerProfileFetches.thenAccept(playerProfiles -> {
-            playerProfiles = playerProfiles.stream()
-                    .sorted((p1, p2) -> {
-                        if(p1.getName() == null)
-                            return -1;
-                        else if(p2.getName() == null)
-                            return 1;
+                        PlayerHeadNode playerHeadNode = new PlayerHeadNode(
+                                playerProfile,
+                                (player, clickedPlayer) -> {
+                                    PlayerMenu playerMenu =
+                                            new PlayerMenu(getPlugin(), player, clickedPlayer);
 
-                        return p1.getName().compareTo(p2.getName());
-                    })
-                    .skip((long) (page - 1) * availableSlots)
-                    .limit(availableSlots)
-                    .toList();
+                                    MenuManager menuManager = getPlugin().getMenuManager();
+                                    MenuSession session =
+                                            menuManager.getSession(player.getUniqueId());
 
-            for(PlayerProfile targetPlayerProfile : playerProfiles) {
-                PlayerHeadNode playerHeadNode = new PlayerHeadNode(targetPlayerProfile, (player, clickedPlayer) -> {
-                    PlayerMenu playerMenu = new PlayerMenu(getPlugin(), player, clickedPlayer);
+                                    session.open(playerMenu);
+                                }
+                        );
 
-                    MenuManager menuManager = getPlugin().getMenuManager();
-                    MenuSession session = menuManager.getSession(player.getUniqueId());
-                    session.open(playerMenu);
-                });
-
-                addNode(playerHeadNode);
-            }
-        });
+                        addNode(playerHeadNode);
+                    });
+        }
     }
 
     @Override
