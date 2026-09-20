@@ -71,6 +71,7 @@ public abstract class PlayerFlagNode extends MenuNode {
         dataComponentTypesToHide.add(DataComponentTypes.POTION_CONTENTS);
         dataComponentTypesToHide.add(DataComponentTypes.FIREWORK_EXPLOSION);
         dataComponentTypesToHide.add(DataComponentTypes.FIREWORKS);
+        dataComponentTypesToHide.add(DataComponentTypes.BUNDLE_CONTENTS);
         item.setData(
                 DataComponentTypes.TOOLTIP_DISPLAY,
                 TooltipDisplay.tooltipDisplay()
