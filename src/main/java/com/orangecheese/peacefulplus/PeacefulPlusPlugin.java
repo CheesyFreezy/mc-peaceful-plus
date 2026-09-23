@@ -4,6 +4,7 @@ import com.orangecheese.peacefulplus.commands.PeacefulPlusBaseCommand;
 import com.orangecheese.peacefulplus.events.WhiteListProxyEvent;
 import com.orangecheese.peacefulplus.events.normal.MenuHandleEvent;
 import com.orangecheese.peacefulplus.events.normal.OnHostileTargetEvent;
+import com.orangecheese.peacefulplus.events.normal.OnHostileTargetTNTEvent;
 import com.orangecheese.peacefulplus.events.normal.OnHostileTargetWardenEvent;
 import com.orangecheese.peacefulplus.events.proxy.*;
 import com.orangecheese.peacefulplus.gui.MenuManager;
@@ -68,11 +69,13 @@ public class PeacefulPlusPlugin extends JavaPlugin {
 
         // Standard listeners.
         OnHostileTargetEvent hostileTargetEvent = new OnHostileTargetEvent();
+        OnHostileTargetTNTEvent hostileTargetTNTEvent = new OnHostileTargetTNTEvent(hostileTargetEvent);
         OnHostileTargetWardenEvent hostileTargetWardenEvent = new OnHostileTargetWardenEvent(hostileTargetEvent);
         MenuHandleEvent menuHandleEvent = new MenuHandleEvent(this, menuManager);
 
         PluginManager pluginManager = getServer().getPluginManager();
         pluginManager.registerEvents(hostileTargetEvent, this);
+        pluginManager.registerEvents(hostileTargetTNTEvent, this);
         pluginManager.registerEvents(hostileTargetWardenEvent, this);
         pluginManager.registerEvents(menuHandleEvent, this);
     }
