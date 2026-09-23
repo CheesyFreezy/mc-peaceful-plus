@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.orangecheese"
-version = "0.2-ALPHA"
+version = "0.2.1-ALPHA"
 
 repositories {
     mavenCentral()
